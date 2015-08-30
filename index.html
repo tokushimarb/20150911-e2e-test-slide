@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="中野 英雄" />
+  <meta name="date" content="2015-09-11" />
+  <title>OSS普及協議会Ruby勉強会3</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">OSS普及協議会Ruby勉強会3</h1>
+  <p class="author">
+<a href="https://www.facebook.com/hideo.nakano">中野 英雄</a>
+  </p>
+  <p class="date">2015-09-11</p>
+</div>
+<div id="はじめに" class="slide section level1">
+<h1>はじめに</h1>
+<p>このスライドは公開されています。</p>
+<p>このスライドのリポジトリは<a href="https://github.com/tokushimarb/20150911-e2e-test-slide" class="uri">https://github.com/tokushimarb/20150911-e2e-test-slide</a>にあります。 また、本講座で開発する E2E テストは、<a href="https://github.com/tokushimarb/20150911-e2e-test" class="uri">https://github.com/tokushimarb/20150911-e2e-test</a>にあります。</p>
+<p>間違いなどを見つけた場合は</p>
+<ul>
+<li>
+メールで連絡
+</li>
+<li>
+Issueで報告
+</li>
+<li>
+Pull Requestで修正案を提出
+</li>
+</ul>
+<p>などしていただけるとありがたいです (※下に行くほど嬉しいです)</p>
+</div>
+<div id="自己紹介" class="slide section level1">
+<h1>自己紹介</h1>
+<ul>
+<li>
+勤務先: <a href="http://www.web-tips.co.jp/">株式会社ウェブチップス</a>
+</li>
+<li>
+Ruby 歴: 半月程度
+<li>
+ソーシャル:
+<ul>
+<li>
+facebook: <a href="https://www.facebook.com/hideo.nakano" class="uri">https://www.facebook.com/hideo.nakano</a>
+</li>
+<li>
+twitter: <a href="https://twitter.com/sunny4381" class="uri">https://twitter.com/sunny4381</a>
+</li>
+<li>
+github: <a href="https://github.com/sunny4381" class="uri">https://github.com/sunny4381</a>
+</li>
+</ul>
+</li>
+<li>
+経歴:
+<ul>
+<li>
+アイアンマンを目指して練習中に事故る
+</li>
+<li>
+練習していないにもかかわらず、これまで通り食べる
+</li>
+<li>
+8 kg ぐらい太る
+</li>
+<li>
+健康診断で、肝機能が悪いことが判明
+</li>
+<li>
+4 kg 痩せる
+</li>
+<li>
+肝機能が少し回復（→いまここ）
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="目次" class="slide section level1">
+<h1>目次</h1>
+<ul>
+<li>
+本講座でのE2Eテスト
+</li>
+<li>
+環境構築
+</li>
+<li>
+E2E テストプロジェクトの作成
+</li>
+<li>
+E2E テスト書いてみる
+</li>
+<li>
+応用問題
+</li>
+<li>
+質疑応答
+</li>
+</ul>
+</div>
+<div id="本講座でのe2eテスト" class="slide section level1">
+<h1>本講座でのE2Eテスト</h1>
+<h2 id="e2eテストとは">E2Eテストとは？</h2>
+<p>E2E とは「End-to-End」の略で、E2Eテストとは、システム全体が正しく動作することを確認するテストのこと。</p>
+参考:
+<ul>
+<li>
+<a href="http://qiita.com/bouzuao/items/8e9493d1cb7781b08f2f">e2e - TDDの導入とエンドツーエンドテスト自動化の実践まとめ - Qiita</a>
+</li>
+<li>
+<a href="http://solution.realtech.jp/blog/2011/04/run-sap.html">Run SAP】Run SAP方法論によく出てくる E2E（End-to-End）って何？ - SAP技術ブログ</a>
+</li>
+<li>
+<a href="https://ja.wikipedia.org/wiki/エンドツーエンド原理">エンドツーエンド原理 - Wikipedia</a>
+</li>
+</ul>
+</div>
+<div id="本講座でのe2eテスト-1" class="slide section level1">
+<h1>本講座でのE2Eテスト</h1>
+<h2 id="ツール">ツール</h2>
+<p>次のツールを使います。</p>
+<ul>
+<li>
+<a href="http://www.seleniumhq.org">Selenium</a>: Web ブラウザーをプログラムから操作できるサービス
+</li>
+<li>
+<a href="https://github.com/jnicklas/capybara">Capybara</a>: Web アプリケーション テストフレームワーク
+</li>
+</ul>
+</div>
+<div id="本講座でのe2eテスト-2" class="slide section level1">
+<h1>本講座でのE2Eテスト</h1>
+<h2 id="テスト対象">テスト対象</h2>
+<p>テストするアプリケーション:</p>
+<ul>
+<li>
+<a href="https://github.com/kaosf/20150821-oss-twcopy">20150821-oss-twcopy</a>: 第2回で開発した Web アプリケーションをテスト
+</li>
+</ul>
+</div>
+<div id="本講座でのe2eテスト-3" class="slide section level1">
+<h1>本講座でのE2Eテスト</h1>
+<h2 id="目標とする環境">目標とする環境</h2>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="505px" height="286px" version="1.1">
+<defs><linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="mx-gradient-fff2cc-1-ffd966-1-s-0"><stop offset="0%" style="stop-color:#FFF2CC"/><stop offset="100%" style="stop-color:#FFD966"/></linearGradient><linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="mx-gradient-ffffff-0.9-ffffff-0.1-s-0"><stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.1"/></linearGradient><linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="mx-gradient-dae8fc-1-7ea6e0-1-s-0"><stop offset="0%" style="stop-color:#DAE8FC"/><stop offset="100%" style="stop-color:#7EA6E0"/></linearGradient></defs><g transform="translate(0.5,0.5)"><rect x="1" y="1" width="500" height="280" fill="#d0d0d0" stroke="#d0d0d0" transform="translate(2,3)" opacity="1"/><rect x="1" y="1" width="500" height="280" fill="url(#mx-gradient-fff2cc-1-ffd966-1-s-0)" stroke="#d6b656" pointer-events="none"/><path d="M 0 0 L 0 113 Q 251 197 502 113 L 502 0 Z" fill="url(#mx-gradient-ffffff-0.9-ffffff-0.1-s-0)" stroke="none" pointer-events="none"/><g transform="translate(4,9)">
+<switch>
+<foreignObject pointer-events="all" width="121" height="16" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+<div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 121px; white-space: normal;">
+<div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+Windows / Mac Host
+</div>
+</div>
+</foreignObject><text x="61" y="14" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+</switch>
+</g><rect x="21" y="103" width="140" height="77" rx="11.55" ry="11.55" fill="#ffcc99" stroke="#000000" pointer-events="none"/><g transform="translate(59,128)">
+<switch>
+<foreignObject pointer-events="all" width="63" height="30" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+<div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 63px; white-space: normal; text-align: center;">
+<div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+Selenium
+<div>
+Server
+</div>
+</div>
+</div>
+</foreignObject><text x="32" y="21" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+</switch>
+</g><rect x="211" y="31" width="260" height="220" fill="#d0d0d0" stroke="#d0d0d0" transform="translate(2,3)" opacity="1"/><rect x="211" y="31" width="260" height="220" fill="url(#mx-gradient-dae8fc-1-7ea6e0-1-s-0)" stroke="#6c8ebf" pointer-events="none"/><path d="M 210 30 L 210 119 Q 341 185 472 119 L 472 30 Z" fill="url(#mx-gradient-ffffff-0.9-ffffff-0.1-s-0)" stroke="none" pointer-events="none"/><g transform="translate(214,39)">
+<switch>
+<foreignObject pointer-events="all" width="218" height="16" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+<div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 218px; white-space: normal;">
+<div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+VirtualBox via Vagrant（Linux Guest）
+</div>
+</div>
+</foreignObject><text x="109" y="14" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+</switch>
+</g><rect x="241" y="66" width="200" height="60" rx="9" ry="9" fill="#99ccff" stroke="#000000" pointer-events="none"/><g transform="translate(267,83)">
+<switch>
+<foreignObject pointer-events="all" width="147" height="30" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+<div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 147px; white-space: normal; text-align: center;">
+<div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+20150821-oss-twcopy
+<div>
+（http://localhost:3000/）
+</div>
+</div>
+</div>
+</foreignObject><text x="74" y="21" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+</switch>
+</g><rect x="241" y="161" width="200" height="60" rx="9" ry="9" fill="#99ccff" stroke="#000000" pointer-events="none"/><g transform="translate(272,178)">
+<switch>
+<foreignObject pointer-events="all" width="137" height="30" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+<div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 137px; white-space: normal; text-align: center;">
+<div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+E2Eテスト
+<div>
+（RSpec + Capybara）
+</div>
+</div>
+</div>
+</foreignObject><text x="69" y="21" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+</switch>
+</g><path d="M 234.75 169.96 L 167.25 156.6" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 239.9 170.98 L 232.36 173.06 L 234.75 169.96 L 233.72 166.19 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 162.1 155.58 L 169.64 153.5 L 167.25 156.6 L 168.28 160.37 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 167.27 127.62 L 234.73 115.34" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 162.1 128.56 L 168.36 123.86 L 167.27 127.62 L 169.61 130.75 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 239.9 114.4 L 233.64 119.1 L 234.73 115.34 L 232.39 112.21 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/></g>
+</svg>
+</div>
+<div id="本講座でのe2eテスト-4" class="slide section level1">
+<h1>本講座でのE2Eテスト</h1>
+<h2 id="目標とする環境-1">目標とする環境</h2>
+<ul>
+<li>
+<a href="http://www.seleniumhq.org">Selenium</a>は、Windows/Mac Host 側で動作させます。
+</li>
+<li>
+<a href="https://github.com/kaosf/20150821-oss-twcopy">20150821-oss-twcopy</a> は、Vagrant 側で動作させます。
+</li>
+<li>
+E2E テストも、Vagrant 側で動作させます。
+</li>
+<li>
+E2E テストは、Windows/Mac Host 側で動作している Selenium と通信し、Selenium は 20150821-oss-twcopy にアクセスします。
+</li>
+</ul>
+</div>
+<div id="環境構築" class="slide section level1">
+<h1>環境構築</h1>
+<h2 id="手順">手順</h2>
+<ol>
+<li>
+Java を Host にインストール（Selenium の動作に必要です）
+</li>
+<li>
+Selenium と Firefox（か Google Chrome）をインストール
+</li>
+<li>
+Selenium を起動
+</li>
+</ol>
+</div>
+<div id="環境構築-1" class="slide section level1">
+<h1>環境構築</h1>
+<h2 id="java-を-host-にインストール">Java を Host にインストール</h2>
+<p>Selenium の動作に Java が必要です。 Java がインストールされていない人は、</p>
+<h3 id="windows-または-mac">Windows または Mac</h3>
+<p>Java を<a href="https://java.com/ja/download/" class="uri">https://java.com/ja/download/</a>からダウンロードしてインストールします。</p>
+<h3 id="linux">Linux</h3>
+<p><code>apt-get</code>（Debian/Ubuntu）か <code>yum</code>（CentOS/RHEL）か <code>dnf</code>（Fedora） でインストールします。</p>
+</div>
+<div id="環境構築-2" class="slide section level1">
+<h1>環境構築</h1>
+<h2 id="selenium-と-firefoxか-google-chromeをインストール">Selenium と Firefox（か Google Chrome）をインストール</h2>
+<h3 id="selenium">Selenium</h3>
+<p><a href="http://www.seleniumhq.org/download/" class="uri">http://www.seleniumhq.org/download/</a> から、<code>selenium-server-standalone-2.47.1-2.jar</code> をダウンロード。</p>
+<h3 id="firefox-をインストール">Firefox をインストール</h3>
+<p>Google Chrome をインストールしていない人は、Firefox を <a href="https://www.mozilla.org/ja/firefox/new/" class="uri">https://www.mozilla.org/ja/firefox/new/</a> からダウンロードしてインストールします。</p>
+<h3 id="google-chrome">Google Chrome</h3>
+<p>Google Chrome をインストールしている人は、Google Chrome Driver を <a href="http://chromedriver.storage.googleapis.com/index.html?path=2.16/" class="uri">http://chromedriver.storage.googleapis.com/index.html?path=2.16/</a> からダウンロードします。</p>
+</div>
+<div id="環境構築-3" class="slide section level1">
+<h1>環境構築</h1>
+<h2 id="selenium-を起動">Selenium を起動</h2>
+<p>コマンドプロンプトやシェルから次のコマンドを実行します。</p>
+<h3 id="firefox-を使用する人">Firefox を使用する人</h3>
+<pre class="shell"><code>java -jar selenium-server-standalone-2.47.1-2.jar</code></pre>
+<h3 id="google-chrome-を使用する人">Google Chrome を使用する人</h3>
+<pre class="shell"><code>java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone-2.47.1-2.jar</code></pre>
+</div>
+<div id="環境構築-4" class="slide section level1">
+<h1>環境構築</h1>
+<h2 id="selenium-を起動-1">Selenium を起動</h2>
+<p>起動に成功すると、次のようなメッセージが表示されます。</p>
+<pre><code>09:37:11.066 INFO - Launching a standalone Selenium Server
+09:37:11.124 INFO - Java: Oracle Corporation 25.25-b02
+09:37:11.124 INFO - OS: Mac OS X 10.10.5 x86_64
+09:37:11.151 INFO - v2.47.1, with Core v2.47.1. Built from revision 411b314
+09:37:11.248 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match the current platform MAC
+09:37:11.249 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+registration capabilities Capabilities [{browserName=MicrosoftEdge, version=, platform=WINDOWS}] does not match the current platform MAC
+09:37:11.249 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+09:37:11.249 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+09:37:11.385 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+09:37:11.385 INFO - Selenium Server is up and running</code></pre>
+<p>終了するには <code>Ctrl+C</code> を押します。</p>
+</div>
+<div id="e2e-テストの準備" class="slide section level1">
+<h1>E2E テストの準備</h1>
+<h2 id="vagrant-起動">Vagrant 起動</h2>
+<p>Vagrant Box を起動していない人は起動しましょう。</p>
+<pre class="shell"><code>$ vagrant up
+Bringing machine &#39;default&#39; up with &#39;virtualbox&#39; provider...
+==&gt; default: Importing base box &#39;ruby-vagrant&#39;...
+==&gt; default: Matching MAC address for NAT networking...
+==&gt; default: Setting the name of the VM: 20150821-oss-twcopy_default_1440809901768_54170
+==&gt; default: Clearing any previously set network interfaces...
+==&gt; default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+==&gt; default: Forwarding ports...
+    default: 22 =&gt; 2222 (adapter 1)
+==&gt; default: Running &#39;pre-boot&#39; VM customizations...
+==&gt; default: Booting VM...
+==&gt; default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+...</code></pre>
+</div>
+<div id="e2e-テストの準備-1" class="slide section level1">
+<h1>E2E テストの準備</h1>
+<h2 id="oss-twcopy-の実行">20150821-oss-twcopy の実行</h2>
+<p>Vagrant Box に SSH で接続し、 第2回で開発した<a href="https://github.com/kaosf/20150821-oss-twcopy">20150821-oss-twcopy</a>を実行します。</p>
+<pre class="shell"><code>$ cd $第2回で開発したアプリケーションディレクトリ
+$ bin/rails s -b 0.0.0.0
+=&gt; Booting WEBrick
+=&gt; Rails 4.2.3 application starting in development on http://0.0.0.0:3000
+=&gt; Run `rails server -h` for more startup options
+=&gt; Ctrl-C to shutdown server
+[2015-08-29 10:07:57] INFO  WEBrick 1.3.1
+[2015-08-29 10:07:57] INFO  ruby 2.2.2 (2015-04-13) [x86_64-linux]
+[2015-08-29 10:07:57] INFO  WEBrick::HTTPServer#start: pid=6738 port=3000</code></pre>
+</div>
+<div id="e2e-テストの準備-2" class="slide section level1">
+<h1>E2E テストの準備</h1>
+<h2 id="挫折者向け">挫折者向け</h2>
+<p>第2回の講座を中途で挫折した人？ 第2回で開発した<a href="https://github.com/kaosf/20150821-oss-twcopy">20150821-oss-twcopy</a>を GitHub から取得し、 起動します。</p>
+<p>おそらく git がインストールされていないので、次のコマンドで git をインストールします。</p>
+<pre class="shell"><code>$ sudo yum install git</code></pre>
+</div>
+<div id="e2e-テストの準備-3" class="slide section level1">
+<h1>E2E テストの準備</h1>
+<h2 id="挫折者向け-1">挫折者向け</h2>
+<p>GitHub から第2回で開発した<a href="https://github.com/kaosf/20150821-oss-twcopy">20150821-oss-twcopy</a>を取得します。</p>
+<pre class="shell"><code>$ git clone https://github.com/kaosf/20150821-oss-twcopy.git</code></pre>
+</div>
+<div id="e2e-テストの準備-4" class="slide section level1">
+<h1>E2E テストの準備</h1>
+<h2 id="挫折者向け-2">挫折者向け</h2>
+<p><code>bundle install</code> を実行します。</p>
+<pre class="shell"><code>$ cd 20150821-oss-twcopy
+$ bundle install
+Fetching gem metadata from https://rubygems.org/............
+Fetching version metadata from https://rubygems.org/...
+Fetching dependency metadata from https://rubygems.org/..
+Resolving dependencies...
+Using rake 10.4.2
+Using i18n 0.7.0
+...</code></pre>
+</div>
+<div id="e2e-テストの準備-5" class="slide section level1">
+<h1>E2E テストの準備</h1>
+<h2 id="挫折者向け-3">挫折者向け</h2>
+<p>データベースを作成後、Web アプリケーションを実行します。</p>
+<pre class="shell"><code>$ rake db:migrate
+$ bin/rails s -b 0.0.0.0
+=&gt; Booting WEBrick
+=&gt; Rails 4.2.3 application starting in development on http://0.0.0.0:3000
+=&gt; Run `rails server -h` for more startup options
+=&gt; Ctrl-C to shutdown server
+[2015-08-29 10:07:57] INFO  WEBrick 1.3.1
+[2015-08-29 10:07:57] INFO  ruby 2.2.2 (2015-04-13) [x86_64-linux]
+[2015-08-29 10:07:57] INFO  WEBrick::HTTPServer#start: pid=6738 port=3000</code></pre>
+</div>
+<div id="e2e-テストの準備-6" class="slide section level1">
+<h1>E2E テストの準備</h1>
+<h2 id="oss-twcopy-へ-web-ブラウザでアクセス">20150821-oss-twcopy へ Web ブラウザでアクセス</h2>
+<p>起動した Web アプリケーションへ Host 側からアクセスしてみましょう。</p>
+<pre><code>http://localhost:3000/</code></pre>
+<p>正常に Web アプリケーションが表示されれば、E2Eテストの準備が完了です。</p>
+</div>
+<div id="e2e-テストプロジェクトの作成" class="slide section level1">
+<h1>E2E テストプロジェクトの作成</h1>
+<h2 id="雛形作成">雛形作成</h2>
+<p>もう一枚コンソールを開いて Vagrant Box に SSH で接続してみます。 そして、次コマンドを実行し、テストプロジェクトディレクトリを作成してください。</p>
+<pre class="shell"><code>$ mkdir e2e-test
+$ cd e2e-test
+$ bundle init
+Writing new Gemfile to /home/vagrant/e2e-test/Gemfile</code></pre>
+</div>
+<div id="e2e-テストプロジェクトの作成-1" class="slide section level1">
+<h1>E2E テストプロジェクトの作成</h1>
+<h2 id="gemfile-作成">Gemfile 作成</h2>
+<p><code>bundle init</code> を実行すると、雛形となる <code>Gemfile</code> が作成されます。 <code>Gemfile</code> に必要な gem を追加します。</p>
+<pre class="shell"><code>$ vi Gemfile</code></pre>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="co"># A sample Gemfile</span>
+source <span class="st">&quot;https://rubygems.org&quot;</span>
+
+<span class="co"># gem &quot;rails&quot;</span>
+gem <span class="st">&#39;rspec&#39;</span>
+gem <span class="st">&#39;capybara&#39;</span>
+gem <span class="st">&#39;selenium-webdriver&#39;</span></code></pre></div>
+</div>
+<div id="e2e-テストプロジェクトの作成-2" class="slide section level1">
+<h1>E2E テストプロジェクトの作成</h1>
+<h2 id="bundle-install">bundle install</h2>
+<p>ファイルを保存して <code>bundle install</code> を実行します。</p>
+<pre><code>$ bundle install
+Fetching gem metadata from https://rubygems.org/.........
+Fetching version metadata from https://rubygems.org/..
+Resolving dependencies...
+Using mime-types 2.6.1
+Using mini_portile 0.6.2
+...
+Installing websocket 1.2.2
+Installing selenium-webdriver 2.47.1
+Using bundler 1.10.5
+Bundle complete! 3 Gemfile dependencies, 20 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.</code></pre>
+</div>
+<div id="e2e-テストプロジェクトの作成-3" class="slide section level1">
+<h1>E2E テストプロジェクトの作成</h1>
+<h2 id="rspec-初期化">RSpec 初期化</h2>
+<p>次のコマンドを実行し、rspec を実行できるようにします。</p>
+<pre><code>$ rspec --init</code></pre>
+</div>
+<div id="e2e-テストプロジェクトの作成-4" class="slide section level1">
+<h1>E2E テストプロジェクトの作成</h1>
+<h2 id="rspec-の初期設定">RSpec の初期設定</h2>
+<p><code>spec/spec_helper.rb</code> を編集し、Capybara と Selenium を組み込みます。 <code>spec/spec_helper.rb</code> をテキストエディタで開き、次の行を先頭に追加してください。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">require <span class="st">&#39;capybara&#39;</span>
+require <span class="st">&#39;selenium-webdriver&#39;</span>
+
+selenium_config = {}
+selenium_config[<span class="st">:browser</span>] = <span class="st">:remote</span>
+selenium_config[<span class="st">:url</span>] = <span class="st">&quot;http://10.0.2.2:4444/wd/hub&quot;</span>
+
+<span class="dt">Capybara</span>.register_driver <span class="st">:remote_firefox</span> <span class="kw">do</span> |app|
+  <span class="dt">Capybara</span>::<span class="dt">Selenium</span>::<span class="dt">Driver</span>.new(app, selenium_config)
+<span class="kw">end</span>
+
+<span class="dt">Capybara</span>.register_driver <span class="st">:remote_chrome</span> <span class="kw">do</span> |app|
+  selenium_config[<span class="st">:desired_capabilities</span>] = <span class="st">:chrome</span>
+  <span class="dt">Capybara</span>::<span class="dt">Selenium</span>::<span class="dt">Driver</span>.new(app, selenium_config)
+<span class="kw">end</span>
+
+<span class="dt">Capybara</span>.app_host = <span class="st">&quot;http://localhost:3000&quot;</span>
+<span class="co"># Firefox を使用する人は remote_filefox を、</span>
+<span class="co"># Google Chrome を使用する人は remote_chrome を有効にします</span>
+<span class="dt">Capybara</span>.default_driver = <span class="st">:remote_firefox</span>
+<span class="co"># Capybara.default_driver = :remote_chrome</span></code></pre></div>
+</div>
+<div id="e2e-テストプロジェクトの作成-5" class="slide section level1">
+<h1>E2E テストプロジェクトの作成</h1>
+<h2 id="rspec-の初期設定-1">RSpec の初期設定</h2>
+<p><code>spec/spec_helper.rb</code> の末尾あたりに次の行を追加します。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">  <span class="co"># Seed global randomization in this process using the `--seed` CLI option.</span>
+  <span class="co"># Setting this allows you to use `--seed` to deterministically reproduce</span>
+  <span class="co"># test failures related to randomization by passing the same `--seed` value</span>
+  <span class="co"># as the one that triggered the failure.</span>
+  <span class="dt">Kernel</span>.srand config.seed
+=<span class="kw">end</span>
+
+  <span class="co"># 次の行を追加</span>
+  config.include <span class="dt">Capybara</span>::<span class="dt">DSL</span>
+<span class="kw">end</span></code></pre></div>
+</div>
+<div id="e2e-テストプロジェクトの作成-6" class="slide section level1">
+<h1>E2E テストプロジェクトの作成</h1>
+<h2 id="しおり">しおり</h2>
+<p>ここまでの内容は、GitHub にあります。</p>
+<pre><code>$ git clone https://github.com/tokushimarb/20150911-e2e-test
+$ cd 20150911-e2e-test</code></pre>
+</div>
+<div id="e2e-テストを書いてみる" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="動作確認用テスト">動作確認用テスト</h2>
+<p>まずは、プログラムでサーバーにアクセスしてみましょう。 テキストエディタでテストファイル（ここでは <code>first_e2e_spec.rb</code>）を作成します。</p>
+<pre class="shell"><code>$ vi spec/first_e2e_spec.rb</code></pre>
+<p>テストファイルを次のように編集します。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">require <span class="st">&#39;spec_helper.rb&#39;</span>
+
+<span class="dt">RSpec</span>.describe <span class="st">&quot;first e2e test&quot;</span>, <span class="st">type: :feature</span> <span class="kw">do</span>
+  it <span class="st">&quot;sign in&quot;</span> <span class="kw">do</span>
+    visit <span class="st">&quot;/&quot;</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre></div>
+</div>
+<div id="e2e-テストを書いてみる-1" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="テストの実行">テストの実行</h2>
+<p><code>rspec</code> コマンドを実行すると、テストが開始します。</p>
+<pre><code>$ rspec
+.
+
+Finished in 5.11 seconds (files took 0.29045 seconds to load)
+1 example, 0 failures
+</code></pre>
+<p>環境や設定などが正しければ、 自動でブラウザが起動して、Web アプリケーションが表示され、自動でブラウザが終了します。</p>
+</div>
+<div id="e2e-テストを書いてみる-2" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="しおり-1">しおり</h2>
+<p>ここまでの内容は、GitHub にあります。</p>
+<p>ダウンロードしていない人は、次のコマンドでダウンロードできます。</p>
+<pre class="shell"><code>$ git clone https://github.com/tokushimarb/20150911-e2e-test
+$ cd 20150911-e2e-test</code></pre>
+<p>次のコマンドで branch を切り替えます。</p>
+<pre class="shell"><code>$ git checkout 1st-test</code></pre>
+</div>
+<div id="e2e-テストを書いてみる-3" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="e2e-テストを拡充">E2E テストを拡充</h2>
+<p>ユーザーを作ってみましょう。 さっきの続きに次のように書きます。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="dt">RSpec</span>.describe <span class="st">&quot;first e2e test&quot;</span>, <span class="st">type: :feature</span> <span class="kw">do</span>
+  it <span class="st">&quot;sign in&quot;</span> <span class="kw">do</span>
+    visit <span class="st">&quot;/&quot;</span>
+
+    <span class="co"># ここから下を追加する</span>
+    click_link <span class="st">&quot;Sign up&quot;</span>
+
+    fill_in <span class="st">&quot;user_email&quot;</span>, <span class="st">with: &quot;test@example.jp&quot;</span>
+    fill_in <span class="st">&quot;user_password&quot;</span>, <span class="st">with: &quot;password&quot;</span>
+    fill_in <span class="st">&quot;user_password_confirmation&quot;</span>, <span class="st">with: &quot;password&quot;</span>
+    fill_in <span class="st">&quot;user_name&quot;</span>, <span class="st">with: &quot;test&quot;</span>
+    click_button <span class="st">&quot;Sign up&quot;</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre></div>
+</div>
+<div id="e2e-テストを書いてみる-4" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="テストの再実行">テストの再実行</h2>
+<p><code>rspec</code> コマンドを実行してください。</p>
+<pre class="shell"><code>$ rspec
+.
+
+Finished in 6.04 seconds (files took 0.28139 seconds to load)
+1 example, 0 failures</code></pre>
+<p>今度も、自動でブラウザが起動して、Web アプリケーションが表示され、自動でブラウザが終了しました。 ※あまりにも早くて分からなかったですか？</p>
+</div>
+<div id="e2e-テストを書いてみる-5" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="コード解説">コード解説</h2>
+<ol class="incremental" style="list-style-type: decimal">
+<li><p>ブラウザが自動で起動し、&quot;/&quot; にアクセスします。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">visit <span class="st">&quot;/&quot;</span></code></pre></div></li>
+<li><p>画面上部の &quot;Sign up&quot; リンクをクリックし、ユーザー登録ページに遷移します。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">click_link <span class="st">&quot;Sign up&quot;</span></code></pre></div></li>
+<li><p>ユーザー登録ページには、4 つの入力欄があります。 4 つの入力欄の上から順に、<code>with</code> で指定した文字列を入力します。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">fill_in <span class="st">&quot;user_email&quot;</span>, <span class="st">with: &quot;test@example.jp&quot;</span>
+fill_in <span class="st">&quot;user_password&quot;</span>, <span class="st">with: &quot;password&quot;</span>
+fill_in <span class="st">&quot;user_password_confirmation&quot;</span>, <span class="st">with: &quot;password&quot;</span>
+fill_in <span class="st">&quot;user_name&quot;</span>, <span class="st">with: &quot;test&quot;</span></code></pre></div></li>
+<li><p>画面下部の &quot;Sign up&quot; ボタンがクリックし、登録処理が実行します。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">click_button <span class="st">&quot;Sign up&quot;</span></code></pre></div></li>
+</ol>
+</div>
+<div id="e2e-テストを書いてみる-6" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="しおり-2">しおり</h2>
+<p>ここまでの内容は、GitHub にあります。</p>
+<p>ダウンロードしていない人は、次のコマンドでダウンロードできます。</p>
+<pre class="shell"><code>$ git clone https://github.com/tokushimarb/20150911-e2e-test
+$ cd 20150911-e2e-test</code></pre>
+<p>次のコマンドで branch を切り替えます。</p>
+<pre class="shell"><code>$ git checkout 2nd-test</code></pre>
+</div>
+<div id="e2e-テストを書いてみる-7" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="検証処理の追加">検証処理の追加</h2>
+<p>ユーザーを登録しただけで、登録に成功したかどうか検証していません。 ユーザー登録に成功したことを検証してみます。</p>
+<p>検証処理を実装する前に、ユーザーの登録に成功すると、どんな画面が表示されるかみてみます。</p>
+</div>
+<div id="e2e-テストを書いてみる-8" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="検証処理の追加-1">検証処理の追加</h2>
+<p>ユーザー登録に成功すると、画面上部のメッセージボックスに、登録成功メッセージ &quot;Welcome! You have signed up successfully.&quot; が表示されます。 このメッセージは、次のような HTML で表示されています。</p>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;alert fade in alert-success &quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;button</span><span class="ot"> class=</span><span class="st">&quot;close&quot;</span><span class="ot"> data-dismiss=</span><span class="st">&quot;alert&quot;</span><span class="kw">&gt;</span>×<span class="kw">&lt;/button&gt;</span>
+  Welcome! You have signed up successfully.
+<span class="kw">&lt;/div&gt;</span></code></pre></div>
+</div>
+<div id="e2e-テストを書いてみる-9" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="検証処理の追加-2">検証処理の追加</h2>
+<p>画面左のサイドバーには、登録したユーザーの名前が表示されています。 この部分の HTML は次のようになっています。</p>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;well sidebar-nav&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;h3&gt;</span>Sidebar<span class="kw">&lt;/h3&gt;</span>
+  <span class="kw">&lt;dl&gt;</span>
+    <span class="kw">&lt;dt&gt;</span>Your name<span class="kw">&lt;/dt&gt;</span>
+    <span class="kw">&lt;dd&gt;</span>test<span class="kw">&lt;/dd&gt;</span>
+    <span class="kw">&lt;dt&gt;</span>Your icon<span class="kw">&lt;/dt&gt;</span>
+    <span class="kw">&lt;dd&gt;&lt;img</span><span class="ot"> class=</span><span class="st">&quot;img-circle&quot;</span><span class="ot"> width=</span><span class="st">&quot;128&quot;</span><span class="ot"> height=</span><span class="st">&quot;128&quot;</span><span class="ot"> src=</span><span class="st">&quot;/icons/original/missing.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Missing&quot;</span><span class="kw">&gt;&lt;/dd&gt;</span>
+  <span class="kw">&lt;/dl&gt;</span>
+  <span class="kw">&lt;ul</span><span class="ot"> class=</span><span class="st">&quot;nav nav-list&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;li</span><span class="ot"> class=</span><span class="st">&quot;nav-header&quot;</span><span class="kw">&gt;</span>Sidebar<span class="kw">&lt;/li&gt;</span>
+    <span class="kw">&lt;li&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;/path1&quot;</span><span class="kw">&gt;</span>Link1<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="kw">&lt;li&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;/path2&quot;</span><span class="kw">&gt;</span>Link2<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="kw">&lt;li&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;/path3&quot;</span><span class="kw">&gt;</span>Link3<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="kw">&lt;/ul&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre></div>
+</div>
+<div id="e2e-テストを書いてみる-10" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="検証処理の追加-3">検証処理の追加</h2>
+<p>メッセージボックスに登録成功メッセージが、 サイドバーに登録したユーザー名が表示されていることを検証してみます。 次のコードを追加してください。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="dt">RSpec</span>.describe <span class="st">&quot;first e2e test&quot;</span>, <span class="st">type: :feature</span> <span class="kw">do</span>
+  it <span class="st">&quot;sign in&quot;</span> <span class="kw">do</span>
+    visit <span class="st">&quot;/&quot;</span>
+
+    click_link <span class="st">&quot;Sign up&quot;</span>
+
+    fill_in <span class="st">&quot;user_email&quot;</span>, <span class="st">with: &quot;test@example.jp&quot;</span>
+    fill_in <span class="st">&quot;user_password&quot;</span>, <span class="st">with: &quot;password&quot;</span>
+    fill_in <span class="st">&quot;user_password_confirmation&quot;</span>, <span class="st">with: &quot;password&quot;</span>
+    fill_in <span class="st">&quot;user_name&quot;</span>, <span class="st">with: &quot;test&quot;</span>
+    click_button <span class="st">&quot;Sign up&quot;</span>
+
+    <span class="co"># ここから下を追加する</span>
+
+    <span class="co"># メッセージボックスに、登録成功メッセージが表示されていることを検証する</span>
+    within <span class="st">&quot;div.alert-success&quot;</span> <span class="kw">do</span>
+      expect(page).to have_content(<span class="st">&quot;Welcome! You have signed up successfully.&quot;</span>)
+    <span class="kw">end</span>
+    <span class="co"># サイドバーに、ユーザー名 &quot;test&quot; が表示されていることを検証する</span>
+    within <span class="st">&quot;div.sidebar-nav&quot;</span> <span class="kw">do</span>
+      expect(page).to have_content(<span class="st">&quot;test&quot;</span>)
+    <span class="kw">end</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre></div>
+</div>
+<div id="e2e-テストを書いてみる-11" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="データベースの初期化">データベースの初期化</h2>
+<p><code>test</code> というユーザーが登録されているので、テストを再実行しても登録に失敗しますので、データベースを削除します。</p>
+<p>Web アプリケーションを実行しているターミナルを表示し、キーボードから <code>Ctrl+C</code> を入力し Web アプリケーションを停止します。</p>
+<pre class="shell"><code>^C[2015-08-29 21:47:16] INFO  going to shutdown ...
+[2015-08-29 21:47:16] INFO  WEBrick::HTTPServer#start done.
+Exiting</code></pre>
+</div>
+<div id="e2e-テストを書いてみる-12" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="データベースの初期化-1">データベースの初期化</h2>
+<p><code>rake db:drop</code> でデータベースを削除し、<code>rake db:migrate</code> でデータベースを作成後、Web アプリケーションを実行します。</p>
+<pre class="shell"><code>$ rake db:drop
+$ rake db:migrate
+$ bin/rails s -b 0.0.0.0
+=&gt; Booting WEBrick
+=&gt; Rails 4.2.3 application starting in development on http://0.0.0.0:3000
+=&gt; Run `rails server -h` for more startup options
+=&gt; Ctrl-C to shutdown server
+[2015-08-29 21:48:34] INFO  WEBrick 1.3.1
+[2015-08-29 21:48:34] INFO  ruby 2.2.2 (2015-04-13) [x86_64-linux]
+[2015-08-29 21:48:34] INFO  WEBrick::HTTPServer#start: pid=4693 port=3000</code></pre>
+</div>
+<div id="e2e-テストを書いてみる-13" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="テストの再実行-1">テストの再実行</h2>
+<p><code>rspec</code> コマンドを実行してください。</p>
+<pre class="shell"><code>$ rspec
+.
+
+Finished in 6.63 seconds (files took 0.26859 seconds to load)
+1 example, 0 failures
+</code></pre>
+<p><code>0 failures</code> と表示されているので、テストに成功したことがわかります。</p>
+</div>
+<div id="e2e-テストを書いてみる-14" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="コード解説-1">コード解説</h2>
+<ol class="incremental" style="list-style-type: decimal">
+<li><p>class <code>alert-success</code> を持つ <code>&lt;div&gt;</code> タグ内に、&quot;Welcome! You have signed up successfully.&quot; があることを検証します。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">within <span class="st">&quot;div.alert-success&quot;</span> <span class="kw">do</span>
+  expect(page).to have_content(<span class="st">&quot;Welcome! You have signed up successfully.&quot;</span>)
+<span class="kw">end</span></code></pre></div>
+<p>メッセージボックスに &quot;Welcome! You have signed up successfully.&quot; が表示されていることを検証しています。</p></li>
+<li><p>class <code>sidebar-nav</code> を持つ <code>&lt;div&gt;</code> タグ内に、&quot;test&quot; があることを検証します。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">within <span class="st">&quot;div.sidebar-nav&quot;</span> <span class="kw">do</span>
+  expect(page).to have_content(<span class="st">&quot;test&quot;</span>)
+<span class="kw">end</span></code></pre></div>
+<p>サイドバーに登録したユーザー名が表示されていることを検証しています。</p></li>
+</ol>
+</div>
+<div id="e2e-テストを書いてみる-15" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="しおり-3">しおり</h2>
+<p>ここまでの内容は、GitHub にあります。</p>
+<p>ダウンロードしていない人は、次のコマンドでダウンロードできます。</p>
+<pre class="shell"><code>$ git clone https://github.com/tokushimarb/20150911-e2e-test
+$ cd 20150911-e2e-test</code></pre>
+<p>次のコマンドで branch を切り替えます。</p>
+<pre class="shell"><code>$ git checkout 3rd-test</code></pre>
+</div>
+<div id="e2e-テストを書いてみる-16" class="slide section level1">
+<h1>E2E テストを書いてみる</h1>
+<h2 id="e2e-テストの流れ">E2E テストの流れ</h2>
+<ol class="incremental" style="list-style-type: decimal">
+<li>ブラウザでアクセスし、どんな画面が表示されるかを確認。</li>
+<li>その際、どんなタグのどんなクラスを持つかを確認。</li>
+<li>ブラウザ操作を、プログラムとして作成し、表示されているタグを検証。</li>
+</ol>
+</div>
+<div id="応用問題" class="slide section level1">
+<h1>応用問題</h1>
+<p>次のような E2E テストで作成してみてください。</p>
+<ul class="incremental">
+<li>ユーザー登録の際、パスワードが 8 桁より短いとエラーが表示されます。 エラーになるかどうか検証してください。</li>
+<li>ツイートを投稿してみて、本当に投稿されたかどうか検証してみてください。</li>
+<li>もう一人別のユーザーを登録し、フォローして、本当にフォローされたかどうか検証してみてください。</li>
+<li>など。</li>
+</ul>
+</div>
+<div id="質疑応答" class="slide section level1">
+<h1>質疑応答</h1>
+</div>
+<div id="ありがとうございました" class="slide section level1">
+<h1>ありがとうございました</h1>
+<ul class="incremental">
+<li><p>Tokuhima.rb は、毎月、徳島マルシェの開催される最終日曜日の 10:00 〜 16:00 に、ねすとラボ でゆる〜く開催しています。</p></li>
+<li><p>オープンソースカンファレンス徳島が、11月14日（土曜日）にとくぎんトモニプラザで開催されます。</p></li>
+</ul>
+</div>
+</body>
+</html>
+<!-- Pandoc version:
+pandoc 1.15.0.6
+Compiled with texmath 0.8.2.2, highlighting-kate 0.6.
+Syntax highlighting is supported for the following languages:
+    abc, actionscript, ada, agda, apache, asn1, asp, awk, bash, bibtex, boo, c,
+    changelog, clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css,
+    curry, d, diff, djangotemplate, dockerfile, dot, doxygen, doxygenlua, dtd,
+    eiffel, email, erlang, fasm, fortran, fsharp, gcc, glsl, gnuassembler, go,
+    haskell, haxe, html, idris, ini, isocpp, java, javadoc, javascript, json,
+    jsp, julia, kotlin, latex, lex, lilypond, literatecurry, literatehaskell,
+    lua, m4, makefile, mandoc, markdown, mathematica, matlab, maxima, mediawiki,
+    metafont, mips, modelines, modula2, modula3, monobasic, nasm, noweb,
+    objectivec, objectivecpp, ocaml, octave, opencl, pascal, perl, php, pike,
+    postscript, prolog, pure, python, r, relaxng, relaxngcompact, rest, rhtml,
+    roff, ruby, rust, scala, scheme, sci, sed, sgml, sql, sqlmysql,
+    sqlpostgresql, tcl, tcsh, texinfo, verilog, vhdl, xml, xorg, xslt, xul,
+    yacc, yaml, zsh
+Default user data directory: <DELETED>
+Copyright (C) 2006-2015 John MacFarlane
+Web:  http://pandoc.org
+This is free software; see the source for copying conditions.
+There is no warranty, not even for merchantability or fitness
+for a particular purpose.
+-->
