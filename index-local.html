@@ -82,46 +82,10 @@ Pull Requestで修正案を提出
 <h1>自己紹介</h1>
 <ul>
 <li>
+氏名: <a href="https://github.com/sunny4381">中野英雄</a>
+</li>
+<li>
 勤務先: <a href="http://www.web-tips.co.jp/">株式会社ウェブチップス</a>
-</li>
-<li>
-Ruby 歴: 半月程度
-<li>
-ソーシャル:
-<ul>
-<li>
-facebook: <a href="https://www.facebook.com/hideo.nakano" class="uri">https://www.facebook.com/hideo.nakano</a>
-</li>
-<li>
-twitter: <a href="https://twitter.com/sunny4381" class="uri">https://twitter.com/sunny4381</a>
-</li>
-<li>
-github: <a href="https://github.com/sunny4381" class="uri">https://github.com/sunny4381</a>
-</li>
-</ul>
-</li>
-<li>
-経歴:
-<ul>
-<li>
-アイアンマンを目指して練習中に事故る
-</li>
-<li>
-練習していないにもかかわらず、これまで通り食べる
-</li>
-<li>
-8 kg ぐらい太る
-</li>
-<li>
-健康診断で、肝機能が悪いことが判明
-</li>
-<li>
-4 kg 痩せる
-</li>
-<li>
-肝機能が少し回復（→いまここ）
-</li>
-</ul>
 </li>
 </ul>
 </div>
@@ -543,7 +507,7 @@ Finished in 5.11 seconds (files took 0.29045 seconds to load)
 <p>ダウンロードしていない人は、次のコマンドでダウンロードできます。</p>
 <pre class="shell"><code>$ git clone https://github.com/tokushimarb/20150911-e2e-test
 $ cd 20150911-e2e-test</code></pre>
-<p>次のコマンドで branch を切り替えます。</p>
+<p>ここまでの内容はブランチ &quot;1st-test&quot; にあるので、 次のコマンドで branch を切り替えます。</p>
 <pre class="shell"><code>$ git checkout 1st-test</code></pre>
 </div>
 <div id="e2e-テストを書いてみる-3" class="slide section level1">
@@ -589,7 +553,7 @@ Finished in 6.04 seconds (files took 0.28139 seconds to load)
 fill_in <span class="st">&quot;user_password&quot;</span>, <span class="st">with: &quot;password&quot;</span>
 fill_in <span class="st">&quot;user_password_confirmation&quot;</span>, <span class="st">with: &quot;password&quot;</span>
 fill_in <span class="st">&quot;user_name&quot;</span>, <span class="st">with: &quot;test&quot;</span></code></pre></div></li>
-<li><p>画面下部の &quot;Sign up&quot; ボタンがクリックし、登録処理が実行します。</p>
+<li><p>画面下部の &quot;Sign up&quot; ボタンをクリックし、登録処理が実行します。</p>
 <div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">click_button <span class="st">&quot;Sign up&quot;</span></code></pre></div></li>
 </ol>
 </div>
@@ -600,7 +564,7 @@ fill_in <span class="st">&quot;user_name&quot;</span>, <span class="st">with: &q
 <p>ダウンロードしていない人は、次のコマンドでダウンロードできます。</p>
 <pre class="shell"><code>$ git clone https://github.com/tokushimarb/20150911-e2e-test
 $ cd 20150911-e2e-test</code></pre>
-<p>次のコマンドで branch を切り替えます。</p>
+<p>ここまでの内容はブランチ &quot;2nd-test&quot; にあるので、 次のコマンドで branch を切り替えます。</p>
 <pre class="shell"><code>$ git checkout 2nd-test</code></pre>
 </div>
 <div id="e2e-テストを書いてみる-7" class="slide section level1">
@@ -726,11 +690,11 @@ Finished in 6.63 seconds (files took 0.26859 seconds to load)
 <p>ダウンロードしていない人は、次のコマンドでダウンロードできます。</p>
 <pre class="shell"><code>$ git clone https://github.com/tokushimarb/20150911-e2e-test
 $ cd 20150911-e2e-test</code></pre>
-<p>次のコマンドで branch を切り替えます。</p>
+<p>ここまでの内容はブランチ &quot;3rd-test&quot; にあるので、 次のコマンドで branch を切り替えます。</p>
 <pre class="shell"><code>$ git checkout 3rd-test</code></pre>
 </div>
-<div id="e2e-テストを書いてみる-16" class="slide section level1">
-<h1>E2E テストを書いてみる</h1>
+<div id="応用問題" class="slide section level1">
+<h1>応用問題</h1>
 <h2 id="e2e-テストの流れ">E2E テストの流れ</h2>
 <ol class="incremental" style="list-style-type: decimal">
 <li>ブラウザでアクセスし、どんな画面が表示されるかを確認。</li>
@@ -738,8 +702,9 @@ $ cd 20150911-e2e-test</code></pre>
 <li>ブラウザ操作を、プログラムとして作成し、表示されているタグを検証。</li>
 </ol>
 </div>
-<div id="応用問題" class="slide section level1">
+<div id="応用問題-1" class="slide section level1">
 <h1>応用問題</h1>
+<h2 id="課題">課題</h2>
 <p>次のような E2E テストで作成してみてください。</p>
 <ul class="incremental">
 <li>ユーザー登録の際、パスワードが 8 桁より短いとエラーが表示されます。 エラーになるかどうか検証してください。</li>
@@ -755,7 +720,7 @@ $ cd 20150911-e2e-test</code></pre>
 <h1>ありがとうございました</h1>
 <ul class="incremental">
 <li><p>Tokuhima.rb は、毎月、徳島マルシェの開催される最終日曜日の 10:00 〜 16:00 に、ねすとラボ でゆる〜く開催しています。</p></li>
-<li><p>オープンソースカンファレンス徳島が、11月14日（土曜日）にとくぎんトモニプラザで開催されます。</p></li>
+<li><p>オープンソースカンファレンス徳島（OSC徳島）が、11月14日（土曜日）にとくぎんトモニプラザで開催されます。</p></li>
 </ul>
 </div>
 </body>

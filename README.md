@@ -1,5 +1,5 @@
 % OSS普及協議会Ruby勉強会3
-% [中野 英雄](https://www.facebook.com/hideo.nakano)
+% [Tokushima.rb](http://tokushimarb.github.io)
 % 2015-09-11
 
 # はじめに
@@ -22,21 +22,8 @@
 # 自己紹介
 
 <ul>
+<li>氏名: [中野英雄](https://github.com/sunny4381)</li>
 <li>勤務先: [株式会社ウェブチップス](http://www.web-tips.co.jp/)</li>
-<li>Ruby 歴: 半月程度
-<li>ソーシャル:<ul>
-<li>facebook: [https://www.facebook.com/hideo.nakano](https://www.facebook.com/hideo.nakano)</li>
-<li>twitter: [https://twitter.com/sunny4381](https://twitter.com/sunny4381)</li>
-<li>github: [https://github.com/sunny4381](https://github.com/sunny4381)</li>
-</ul></li>
-<li>経歴:<ul>
-<li>アイアンマンを目指して練習中に事故る</li>
-<li>練習していないにもかかわらず、これまで通り食べる</li>
-<li>8 kg ぐらい太る</li>
-<li>健康診断で、肝機能が悪いことが判明</li>
-<li>4 kg 痩せる</li>
-<li>肝機能が少し回復（→いまここ）</li>
-</ul></li>
 </ul>
 
 # 目次
@@ -482,6 +469,7 @@ $ git clone https://github.com/tokushimarb/20150911-e2e-test
 $ cd 20150911-e2e-test
 ```
 
+ここまでの内容はブランチ "1st-test" にあるので、
 次のコマンドで branch を切り替えます。
 
 ```shell
@@ -555,7 +543,7 @@ Finished in 6.04 seconds (files took 0.28139 seconds to load)
     fill_in "user_name", with: "test"
     ```
 
-4. 画面下部の "Sign up" ボタンがクリックし、登録処理が実行します。
+4. 画面下部の "Sign up" ボタンをクリックし、登録処理が実行します。
 
     ```ruby
     click_button "Sign up"
@@ -574,6 +562,7 @@ $ git clone https://github.com/tokushimarb/20150911-e2e-test
 $ cd 20150911-e2e-test
 ```
 
+ここまでの内容はブランチ "2nd-test" にあるので、
 次のコマンドで branch を切り替えます。
 
 ```shell
@@ -750,13 +739,14 @@ $ git clone https://github.com/tokushimarb/20150911-e2e-test
 $ cd 20150911-e2e-test
 ```
 
+ここまでの内容はブランチ "3rd-test" にあるので、
 次のコマンドで branch を切り替えます。
 
 ```shell
 $ git checkout 3rd-test
 ```
 
-# E2E テストを書いてみる
+# 応用問題
 
 ## E2E テストの流れ
 
@@ -765,6 +755,8 @@ $ git checkout 3rd-test
 3. ブラウザ操作を、プログラムとして作成し、表示されているタグを検証。
 
 # 応用問題
+
+## 課題
 
 次のような E2E テストで作成してみてください。
 
@@ -781,4 +773,4 @@ $ git checkout 3rd-test
 
 * Tokuhima.rb は、毎月、徳島マルシェの開催される最終日曜日の 10:00 〜 16:00 に、ねすとラボ でゆる〜く開催しています。
 
-* オープンソースカンファレンス徳島が、11月14日（土曜日）にとくぎんトモニプラザで開催されます。
+* オープンソースカンファレンス徳島（OSC徳島）が、11月14日（土曜日）にとくぎんトモニプラザで開催されます。
