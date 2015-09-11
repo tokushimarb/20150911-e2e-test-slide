@@ -143,6 +143,14 @@ java -jar selenium-server-standalone-2.47.1.jar
 
 ### Google Chrome を使用する人
 
+Windows の人:
+
+```shell
+java -Dwebdriver.chrome.driver=chromedriver.exe -jar selenium-server-standalone-2.47.1.jar
+```
+
+Mac/Linux の人:
+
 ```shell
 java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone-2.47.1.jar
 ```
@@ -229,6 +237,17 @@ $ bin/rails s -b 0.0.0.0
 $ sudo yum install git
 ```
 
+## vi の操作が苦手な人
+
+Windows や Mac で、よくあるテキストエディタ風に操作できる `nano` というテキストエディタがあります。
+次のコマンドでインストールできます。
+
+```shell
+$ sudo yum install nano
+```
+
+以降の説明で `vi` を使用している箇所は、`nano` に読み替えてください。
+
 # E2E テストの準備
 
 ## 挫折者向け
@@ -275,6 +294,23 @@ $ bin/rails s -b 0.0.0.0
 [2015-08-29 10:07:57] INFO  WEBrick::HTTPServer#start: pid=6738 port=3000
 ```
 
+## Could not find a JavaScript runtime と表示された人
+
+Gemfile を開き `therubyracer` のコメントを解除し、`bundle install` を実行してみてください。
+
+```ruby
+vi Gemfile
+# gem 'therubyracer', platforms: :ruby
+  ↓
+gem 'therubyracer', platforms: :ruby
+```
+
+```shell
+$ bundle install
+...
+$ bin/rails s -b 0.0.0.0
+```
+
 # E2E テストの準備
 
 ## 20150821-oss-twcopy へ Web ブラウザでアクセス
@@ -286,6 +322,7 @@ http://localhost:3000/
 ```
 
 正常に Web アプリケーションが表示されれば、E2Eテストの準備が完了です。
+
 
 # E2E テストプロジェクトの作成
 

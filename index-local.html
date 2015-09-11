@@ -221,6 +221,9 @@ Selenium を起動
 <h3 id="firefox-を使用する人">Firefox を使用する人</h3>
 <pre class="shell"><code>java -jar selenium-server-standalone-2.47.1.jar</code></pre>
 <h3 id="google-chrome-を使用する人">Google Chrome を使用する人</h3>
+<p>Windows の人:</p>
+<pre class="shell"><code>java -Dwebdriver.chrome.driver=chromedriver.exe -jar selenium-server-standalone-2.47.1.jar</code></pre>
+<p>Mac/Linux の人:</p>
 <pre class="shell"><code>java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone-2.47.1.jar</code></pre>
 </div>
 <div id="環境構築-4" class="slide section level1">
@@ -283,6 +286,10 @@ $ bin/rails s -b 0.0.0.0
 <p>第2回の講座を中途で挫折した人？ 第2回で開発した<a href="https://github.com/kaosf/20150821-oss-twcopy">20150821-oss-twcopy</a>を GitHub から取得し、 起動します。</p>
 <p>おそらく git がインストールされていないので、次のコマンドで git をインストールします。</p>
 <pre class="shell"><code>$ sudo yum install git</code></pre>
+<h2 id="vi-の操作が苦手な人">vi の操作が苦手な人</h2>
+<p>Windows や Mac で、よくあるテキストエディタ風に操作できる <code>nano</code> というテキストエディタがあります。 次のコマンドでインストールできます。</p>
+<pre class="shell"><code>$ sudo yum install nano</code></pre>
+<p>以降の説明で <code>vi</code> を使用している箇所は、<code>nano</code> に読み替えてください。</p>
 </div>
 <div id="e2e-テストの準備-3" class="slide section level1">
 <h1>E2E テストの準備</h1>
@@ -317,6 +324,15 @@ $ bin/rails s -b 0.0.0.0
 [2015-08-29 10:07:57] INFO  WEBrick 1.3.1
 [2015-08-29 10:07:57] INFO  ruby 2.2.2 (2015-04-13) [x86_64-linux]
 [2015-08-29 10:07:57] INFO  WEBrick::HTTPServer#start: pid=6738 port=3000</code></pre>
+<h2 id="could-not-find-a-javascript-runtime-と表示された人">Could not find a JavaScript runtime と表示された人</h2>
+<p>Gemfile を開き <code>therubyracer</code> のコメントを解除し、<code>bundle install</code> を実行してみてください。</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">vi <span class="dt">Gemfile</span>
+<span class="co"># gem &#39;therubyracer&#39;, platforms: :ruby</span>
+  ↓
+gem <span class="st">&#39;therubyracer&#39;</span>, <span class="st">platforms: :ruby</span></code></pre></div>
+<pre class="shell"><code>$ bundle install
+...
+$ bin/rails s -b 0.0.0.0</code></pre>
 </div>
 <div id="e2e-テストの準備-6" class="slide section level1">
 <h1>E2E テストの準備</h1>
