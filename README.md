@@ -119,7 +119,7 @@ Java を[https://java.com/ja/download/](https://java.com/ja/download/)からダ�
 
 ### Selenium
 
-[http://www.seleniumhq.org/download/](http://www.seleniumhq.org/download/) から、`selenium-server-standalone-2.47.1-2.jar` をダウンロード。
+[http://www.seleniumhq.org/download/](http://www.seleniumhq.org/download/) から、`selenium-server-standalone-2.47.1.jar` をダウンロード。
 
 ### Firefox をインストール
 
@@ -139,13 +139,13 @@ Google Chrome をインストールしている人は、Google Chrome Driver を
 ### Firefox を使用する人
 
 ```shell
-java -jar selenium-server-standalone-2.47.1-2.jar
+java -jar selenium-server-standalone-2.47.1.jar
 ```
 
 ### Google Chrome を使用する人
 
 ```shell
-java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone-2.47.1-2.jar
+java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone-2.47.1.jar
 ```
 
 # 環境構築
@@ -379,6 +379,7 @@ Capybara.register_driver :remote_chrome do |app|
 end
 
 Capybara.app_host = "http://localhost:3000"
+Capybara.default_max_wait_time = 5
 # Firefox を使用する人は remote_filefox を、
 # Google Chrome を使用する人は remote_chrome を有効にします
 Capybara.default_driver = :remote_firefox

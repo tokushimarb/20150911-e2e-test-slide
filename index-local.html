@@ -206,7 +206,7 @@ Selenium を起動
 <h1>環境構築</h1>
 <h2 id="selenium-と-firefoxか-google-chromeをインストール">Selenium と Firefox（か Google Chrome）をインストール</h2>
 <h3 id="selenium">Selenium</h3>
-<p><a href="http://www.seleniumhq.org/download/" class="uri">http://www.seleniumhq.org/download/</a> から、<code>selenium-server-standalone-2.47.1-2.jar</code> をダウンロード。</p>
+<p><a href="http://www.seleniumhq.org/download/" class="uri">http://www.seleniumhq.org/download/</a> から、<code>selenium-server-standalone-2.47.1.jar</code> をダウンロード。</p>
 <h3 id="firefox-をインストール">Firefox をインストール</h3>
 <p>Google Chrome をインストールしていない人は、Firefox を <a href="https://www.mozilla.org/ja/firefox/new/" class="uri">https://www.mozilla.org/ja/firefox/new/</a> からダウンロードしてインストールします。</p>
 <h3 id="google-chrome">Google Chrome</h3>
@@ -217,9 +217,9 @@ Selenium を起動
 <h2 id="selenium-を起動">Selenium を起動</h2>
 <p>コマンドプロンプトやシェルから次のコマンドを実行します。</p>
 <h3 id="firefox-を使用する人">Firefox を使用する人</h3>
-<pre class="shell"><code>java -jar selenium-server-standalone-2.47.1-2.jar</code></pre>
+<pre class="shell"><code>java -jar selenium-server-standalone-2.47.1.jar</code></pre>
 <h3 id="google-chrome-を使用する人">Google Chrome を使用する人</h3>
-<pre class="shell"><code>java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone-2.47.1-2.jar</code></pre>
+<pre class="shell"><code>java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone-2.47.1.jar</code></pre>
 </div>
 <div id="環境構築-4" class="slide section level1">
 <h1>環境構築</h1>
@@ -389,6 +389,7 @@ selenium_config[<span class="st">:url</span>] = <span class="st">&quot;http://10
 <span class="kw">end</span>
 
 <span class="dt">Capybara</span>.app_host = <span class="st">&quot;http://localhost:3000&quot;</span>
+<span class="dt">Capybara</span>.default_max_wait_time = <span class="dv">5</span>
 <span class="co"># Firefox を使用する人は remote_filefox を、</span>
 <span class="co"># Google Chrome を使用する人は remote_chrome を有効にします</span>
 <span class="dt">Capybara</span>.default_driver = <span class="st">:remote_firefox</span>
