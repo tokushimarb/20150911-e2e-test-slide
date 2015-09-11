@@ -121,14 +121,13 @@ Java を[https://java.com/ja/download/](https://java.com/ja/download/)からダ�
 
 [http://www.seleniumhq.org/download/](http://www.seleniumhq.org/download/) から、`selenium-server-standalone-2.47.1.jar` をダウンロード。
 
-### Firefox をインストール
+### Firefox か Google Chrome をインストール
 
-Google Chrome をインストールしていない人は、Firefox を
-[https://www.mozilla.org/ja/firefox/new/](https://www.mozilla.org/ja/firefox/new/) からダウンロードしてインストールします。
-
-### Google Chrome
-
-Google Chrome をインストールしている人は、Google Chrome Driver を [http://chromedriver.storage.googleapis.com/index.html?path=2.16/](http://chromedriver.storage.googleapis.com/index.html?path=2.16/) からダウンロードします。
+* Firefox をインストールしている人: 次に進んでください。
+* Google Chrome をインストールしている人: Google Chrome Driver が必要です。
+[http://chromedriver.storage.googleapis.com/index.html?path=2.16/](http://chromedriver.storage.googleapis.com/index.html?path=2.16/) からダウンロードします。
+* どちらもインストールしていない人、Firefox をインストールしましょう。
+  [https://www.mozilla.org/ja/firefox/new/](https://www.mozilla.org/ja/firefox/new/) からダウンロードしてインストールします。
 
 # 環境構築
 
